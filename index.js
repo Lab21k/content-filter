@@ -39,7 +39,7 @@ module.exports = function filter(options) {
 			}
 		}
 		if (found) {
-			return res.status(403).json({error: 'MALICIOUS_INPUT_ERROR', message: `${urlMessage} Found character: ${found}`});
+			return res.status(403).json({error: 'MALICIOUS_INPUT_ERROR', message: urlMessage + found});
 		}
 
 		/* Examining the req.body object If there is a req.body object it must be checked */
@@ -70,7 +70,7 @@ module.exports = function filter(options) {
 				// var hrend = process.hrtime(hrstart)
 				// console.log('Execution time (hr): %ds %dms', hrend[0], hrend[1]/1000000)
 				if (found) {
-					return res.status(403).json({error: 'MALICIOUS_INPUT_ERROR', message: `${bodyMessage} Found character: ${found}`});
+					return res.status(403).json({error: 'MALICIOUS_INPUT_ERROR', message: bodyMessage + found});
 				}
 				next();
 			});
